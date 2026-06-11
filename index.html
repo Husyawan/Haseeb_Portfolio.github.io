@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Game Developer Portfolio</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Inter, sans-serif;
@@ -24,11 +24,12 @@
     h1 {
       text-align: center;
       margin-bottom: 30px;
+      font-size: 2rem;
+      letter-spacing: 1px;
     }
 
-    .about {
-      margin-bottom: 40px;
-    }
+    /* ABOUT */
+    .about { margin-bottom: 30px; }
 
     .about-container {
       display: flex;
@@ -36,7 +37,7 @@
       align-items: center;
       flex-wrap: wrap;
       background: #121a2b;
-      padding: 20px;
+      padding: 24px;
       border-radius: 16px;
     }
 
@@ -48,41 +49,54 @@
       border: 3px solid #22d3ee;
     }
 
-    .about-text {
-      flex: 1;
-    }
-
-    .about-text h2 {
-      margin: 0 0 10px;
-    }
-
-    .about-text p {
-      color: #bbb;
-      line-height: 1.6;
-    }
+    .about-text { flex: 1; min-width: 220px; }
+    .about-text h2 { margin: 0 0 10px; font-size: 1.4rem; }
+    .about-text p { color: #bbb; line-height: 1.6; margin: 6px 0; }
 
     /* BUTTONS */
     .btn {
       text-decoration: none;
       padding: 10px 18px;
       border-radius: 8px;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       margin-right: 10px;
-      margin-top: 10px;
+      margin-top: 12px;
       font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s, transform 0.15s;
     }
+    .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
 
-    .whatsapp {
-      background: #25D366;
-      color: white;
-    }
+    .whatsapp { background: #25D366; color: white; }
+    .resume    { background: #22d3ee; color: #0b0f1a; }
 
-    .resume {
-      background: #22d3ee;
-      color: black;
+    /* EXPERIENCE */
+    .exp-list { list-style: none; padding: 0; margin: 0; }
+    .exp-item {
+      border-left: 3px solid #22d3ee;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      background: #0d1525;
+      border-radius: 0 10px 10px 0;
     }
+    .exp-item h3 { margin: 0 0 4px; font-size: 1rem; color: #22d3ee; }
+    .exp-meta { font-size: 12px; color: #888; margin-bottom: 8px; }
+    .exp-item ul { margin: 6px 0 0 0; padding-left: 18px; color: #ccc; font-size: 13.5px; line-height: 1.7; }
 
     /* PROJECTS */
+    .section-title {
+      font-size: 1.4rem;
+      margin: 36px 0 16px;
+      color: #22d3ee;
+      border-bottom: 1px solid #1f2a44;
+      padding-bottom: 8px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -93,12 +107,9 @@
       background: #121a2b;
       border-radius: 16px;
       padding: 15px;
-      transition: 0.3s;
+      transition: transform 0.3s;
     }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
+    .card:hover { transform: translateY(-5px); }
 
     .game-img {
       width: 100%;
@@ -107,19 +118,9 @@
       border-radius: 12px;
     }
 
-    h3 {
-      margin: 10px 0;
-    }
-
-    .meta {
-      color: #aaa;
-      font-size: 14px;
-    }
-
-    .tags {
-      margin-top: 10px;
-    }
-
+    h3 { margin: 10px 0; }
+    .meta { color: #aaa; font-size: 14px; }
+    .tags { margin-top: 10px; }
     .tag {
       display: inline-block;
       padding: 4px 8px;
@@ -128,11 +129,7 @@
       margin: 2px;
       font-size: 12px;
     }
-
-    .desc {
-      margin-top: 10px;
-      font-size: 14px;
-    }
+    .desc { margin-top: 10px; font-size: 14px; }
 
     .video-container {
       margin-top: 10px;
@@ -142,7 +139,6 @@
       overflow: hidden;
       border-radius: 10px;
     }
-
     .video-container iframe {
       position: absolute;
       width: 100%;
@@ -150,95 +146,139 @@
     }
   </style>
 </head>
-
 <body>
 
 <div class="container">
 
   <h1>Portfolio</h1>
 
-  <!-- ABOUT SECTION -->
+  <!-- ABOUT -->
   <section class="about">
     <div class="about-container">
-
       <div class="about-img">
         <img src="images/profile.jpg" alt="Profile Image">
       </div>
-
       <div class="about-text">
         <h2>Senior Unity Game Developer</h2>
-
         <p>
           I am a Senior Unity Game Developer with <strong>9+ years of professional experience</strong>
           in designing and developing high-quality 2D, 3D simulation, and FPS games.
         </p>
-
         <p>
           I specialize in <strong>C# programming, Unity engine architecture, gameplay systems, and optimization</strong>,
           delivering scalable and engaging game experiences across mobile, PC, and VR platforms.
         </p>
-
-        <!-- BUTTONS -->
         <div>
-          <a href="https://wa.me/923001234567" target="_blank" class="btn whatsapp">
+          <!-- WhatsApp: opens wa.me link -->
+          <a href="https://wa.me/923354585167" target="_blank" class="btn whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 24 24">
+              <path d="M20.52 3.48A11.93 11.93 0 0012.01 0C5.38 0 .01 5.37.01 12a11.93 11.93 0 001.63 6.03L0 24l6.18-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zM12 22c-1.77 0-3.5-.47-5.02-1.36l-.36-.21-3.67.96.98-3.58-.23-.37A9.94 9.94 0 012 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.94 9.94 0 0122 12c0 5.52-4.48 10-10 10zm5.44-7.35c-.3-.15-1.77-.87-2.04-.97-.28-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51H7.4c-.17 0-.45.06-.68.3-.23.23-.9.88-.9 2.15 0 1.27.92 2.5 1.05 2.67.13.17 1.82 2.78 4.4 3.9.62.27 1.1.43 1.47.55.62.2 1.18.17 1.62.1.49-.07 1.52-.62 1.73-1.22.22-.6.22-1.11.15-1.22-.06-.1-.25-.17-.55-.32z"/>
+            </svg>
             WhatsApp Me
           </a>
 
-          <a href="resume.pdf" download class="btn resume">
+          <!-- Download Resume: triggers browser download -->
+          <a href="Muhammad_Haseeb_Resume.pdf" download="Muhammad_Haseeb_Resume.pdf" class="btn resume">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0b0f1a" viewBox="0 0 24 24">
+              <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-6 2h12v2H6v-2z"/>
+            </svg>
             Download Resume
           </a>
         </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- EXPERIENCE SECTION -->
+  <!-- EXPERIENCE -->
   <section class="about">
-    <div class="about-container">
-      <div class="about-text">
+    <div class="about-container" style="flex-direction:column; align-items:flex-start;">
+      <h2 style="margin:0 0 20px; color:#fff;">Experience</h2>
+      <ul class="exp-list" style="width:100%;">
 
-        <h2>Experience</h2>
+        <li class="exp-item">
+          <h3>Senior Unity Developer — Tehu Studios</h3>
+          <div class="exp-meta">July 2024 – Present &nbsp;|&nbsp; Remote</div>
+          <ul>
+            <li>Delivered diverse projects for international clients — multiplayer, AR/VR, and optimization.</li>
+            <li>Proficient in Fusion 2 (Shared Mode, Host/Client, Server/Client), Photon PUN 2 &amp; Mirror Networking.</li>
+            <li>Developed AR/VR applications with immersive gameplay mechanics.</li>
+            <li>Worked on TCG Engine-based card games with advanced game logic.</li>
+            <li>Specialized in game optimization to enhance performance across devices.</li>
+            <li>Implemented monetization strategies — Applovin, AdMob, and Unity Ads.</li>
+            <li>Developed SDKs for seamless integration into various projects.</li>
+            <li>Contributed to Metaverse-related projects — virtual environments &amp; digital interactions.</li>
+          </ul>
+        </li>
 
-        <p><strong>Senior Unity Game Developer – Pixarun Studio</strong><br>
-        2020 – Present</p>
+        <li class="exp-item">
+          <h3>Senior Unity Developer — Arhamsoft</h3>
+          <div class="exp-meta">Oct 2022 – Jul 2024 &nbsp;|&nbsp; Onsite</div>
+          <ul>
+            <li><strong>MetaMuto Metaverse:</strong> Furniture customization, Mirror Networking multiplayer/chat, Crypto Smart Contract (ChainSafe SDK), mini-games.</li>
+            <li><strong>Deskillz SDK:</strong> Unity SDK for Android Native platform — both single player and Photon multiplayer variants.</li>
+            <li><strong>AR Face Recognition:</strong> Captured face expressions via ARKit, JSON clips, blendshape mapping on 2D sprites.</li>
+            <li><strong>Doctor Piercing:</strong> Single-handedly built from scratch — all mechanics, gameplay, and systems.</li>
+            <li><strong>Car Fighting Arena:</strong> It’s a car combat game set in an arena where players can race and battle against each other. The game delivers high levels of excitement and immersive entertainment throughout the experience.</li>
+          </ul>
+        </li>
 
-        <p>
-          - Developed 2D, 3D, FPS, and Multiplayer games<br>
-          - Expertise in Photon, Fusion, Fish-Networking<br>
-          - Implemented Ads, IAP, Firebase, PlayFab systems<br>
-          - Optimized games for Android, iOS, and PC
-        </p>
+        <li class="exp-item">
+          <h3>Lead Unity Developer — Pen and Web</h3>
+          <div class="exp-meta">Jun 2022 – Oct 2022</div>
+          <ul>
+            <li>Led the technical team.</li>
+            <li>Worked on Mirror Networking and Photon for multiplayer 3D WebGL games with Blockchain integration.</li>
+            <li>Shipped 3D games on Play Store and iOS.</li>
+          </ul>
+        </li>
 
-        <p><strong>Unity Developer</strong><br>
-        2017 – 2020</p>
+        <li class="exp-item">
+          <h3>Lead Unity Developer — Devbatch</h3>
+          <div class="exp-meta">Jun 2021 – May 2022</div>
+          <ul>
+            <li>Led the technical team and managed project timelines.</li>
+            <li>Multiplayer games, simulation, and shooting games.</li>
+            <li>Managed Google Play &amp; iOS store operations.</li>
+          </ul>
+        </li>
 
-        <p>
-          - Built multiple mobile games from scratch<br>
-          - Designed gameplay systems and UI/UX<br>
-          - Worked on physics, AI, and animations
-        </p>
+        <li class="exp-item">
+          <h3>Junior Unity Developer — MizoStudio</h3>
+          <div class="exp-meta">Aug 2019 – May 2021</div>
+          <ul>
+            <li>3D robot games, house design games, environment design (terrain), particle systems.</li>
+            <li>Navmesh AI, joints, physics, animator, ads integration, APK size optimization.</li>
+          </ul>
+        </li>
 
-      </div>
+        <li class="exp-item">
+          <h3>Unity Developer — Fate Softworks</h3>
+          <div class="exp-meta">Mar 2017 – Mar 2019</div>
+          <ul>
+            <li>2D puzzle games, platformers, 3D simulation games (RCC Controller), space shooter 3D.</li>
+            <li>AR implementation via Vuforia, iTween, 2D Toolkit, ads integration, APK optimization.</li>
+          </ul>
+        </li>
+
+      </ul>
     </div>
   </section>
 
   <!-- PROJECTS -->
+  <h2 class="section-title">Projects</h2>
   <div id="projects" class="grid"></div>
 
 </div>
 
 <script>
-
 const projects = [
   {
     title: "Exorium Spaceship Shooter",
     image: "images/SpaceShip.png",
     video: "https://www.youtube.com/embed/iCFVcl1c7z4",
     overview: "Multiplayer space combat game with competitive gameplay.",
-    tech: ["Unity", "C#", "Photon Pun2","Shader Graph"],
-    features: ["Weapon system", "Multiplayer","Lobby system","Spaceship Selection"]
+    tech: ["Unity", "C#", "Photon Pun2", "Shader Graph"],
+    features: ["Weapon system", "Multiplayer", "Lobby system", "Spaceship Selection"]
   },
   {
     title: "Cyber Battle",
@@ -252,38 +292,28 @@ const projects = [
 
 function renderProjects() {
   const container = document.getElementById("projects");
-
   container.innerHTML = projects.map(p => `
     <div class="card">
-
-      <img src="${p.image}" class="game-img" />
-
+      <img src="${p.image}" class="game-img" onerror="this.style.background='#1f2a44';this.style.height='180px';" />
       <h3>${p.title}</h3>
-
       <div class="meta">${p.overview}</div>
-
       <div class="tags">
         ${p.tech.map(t => `<span class="tag">${t}</span>`).join("")}
       </div>
-
       <ul class="desc">
         ${p.features.map(f => `<li>${f}</li>`).join("")}
       </ul>
-
       ${p.video ? `
         <div class="video-container">
           <iframe src="${p.video}" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-        </div>
-      ` : ""}
-
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>` : ""}
     </div>
   `).join("");
 }
 
 renderProjects();
-
 </script>
 
 </body>
